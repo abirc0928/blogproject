@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title %}
+   Blog
+{% endblock %}
+
+{% comment %} {% block SearchForm %}
+<form class="d-flex">
+    {% csrf_token %}
+    {{ SearchForm }} 
+    <button class="btn btn-outline-success ms-1" type="submit">Search</button>
+</form>
+{% endblock  %} {% endcomment %}
+
+{% block content %}
+  {% load crispy_forms_tags %}
+  <h1>Home</h1>
+  <div class="row ">
+    {% for post in posts %}
+      <div class="col-sm-6 mt-5">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">{{ post.title }}</h5>
+            <p class="card-text">{{ post.content }}</p>
+            <p class="card-text">Auther : {{ post.author.name}}</p>
+            <p class="card-text">
+              Category:
+              {% for category in post.category.all %}
+                {{ category.name }}
+              {% endfor %}
+            </p>
+            <a href="{% url 'update_post' post.id %}" class="btn btn-primary">Edit</a>
+            <a href="{% url 'delete_post' post.id %}" class="btn btn-danger">Delete</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}
+
