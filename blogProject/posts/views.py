@@ -44,3 +44,9 @@ def update_post(request, post_id):
     except Post.DoesNotExist:
         return HttpResponse("Task does not exist")
 
+def single_post(request, post_id):
+    post = Post.objects.get(pk=post_id)
+    context= {
+        "post": post
+    }
+    return render(request, "single_post.html",context)

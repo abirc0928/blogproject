@@ -13,4 +13,4 @@ def add_profile(request):
     context = {
         "form": add_profile_from
     }
-    return render(request, "add_post.html", context)
+    return render(request, "add_profile.html", context)

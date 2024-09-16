@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Single Post
+{% endblock %}
+
+{% block content %}
+  {% load crispy_forms_tags %}
+  <h1 class="mt-4 mb-4">{{ post.title }}</h1>
+  <h4 class="mt-3 mb-3">Auther : <span class="text-primary"> {{ post.author.name.capitalize }}</span></h4>
+  <h4 class="mt-3 mb-3">
+    Category:{% for category in post.category.all %}
+      <span class="text-primary">{{ category.name.capitalize }}{% if not forloop.last %}, {% endif %}</span>
+    {% endfor %}
+  </h4>
+  <p class="mt-4 mb-4 text-justify">{{ post.content }}</p>
+{% endblock %}

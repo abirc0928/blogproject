@@ -9,4 +9,5 @@ urlpatterns = [
     path('profile/', include('profiles.urls')), # Profile Page URL
     path('post/', include('posts.urls')), # Categories Page URL
     path('category/', include('categories.urls')), # Posts Page URL
+    path('authentication/', include('authentication.urls')), # Posts Page URL
 ]
